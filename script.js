@@ -58,7 +58,14 @@ function game()
 		console.log('--------')
 
 		playerSelection = prompt('Please enter your selection "rock, "paper" or "scissors"')
-		playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase()
+		if (playerSelection == null)
+		{
+			console.log('Player has cancelled the game')
+		}
+		else
+		{
+			playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase()
+		}
 
 		computerSelection = computerPlay()
 
