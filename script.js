@@ -66,6 +66,7 @@ function game()
 		}
 		else
 		{
+			playerSelection = playerSelection.trim()
 			playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase()
 
 			computerSelection = computerPlay()
