@@ -9,6 +9,7 @@ const pairs = 	[['Rock', 'Paper', wins.paper, 'computer']
 		,['Scissors', 'Rock', wins.rock, 'computer']
 		,['Scissors', 'Paper', wins.scissors, 'player']
 		]
+let error = false
 
 function computerPlay()
 {
@@ -43,6 +44,7 @@ function playRound(player, computer)
 	else
 	{
 		console.log(`Invalid selection, please enter ${play[0]}, ${play[1]} or ${play[2]}`) 
+		error = true
 	}
 }
 
@@ -72,6 +74,12 @@ function game()
 			computerSelection = computerPlay()
 
 			playRound(playerSelection, computerSelection)
+
+			if (error)
+			{
+				i--
+				error = false
+			}
 
 			console.log('Player score: ' + score.player + ', Computer score: ' + score.computer)
 
