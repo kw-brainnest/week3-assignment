@@ -1,4 +1,14 @@
 const play = ['Rock', 'Paper', 'Scissors']
+const score = {player:0, computer:0}
+const result = {player:'player wins', computer:'computer wins'}
+const wins = {paper:'Paper covers Rock, ', rock:'Rock breaks Scissors, ', scissors:'Scissors cuts Paper, '}
+const pairs = 	[['Rock', 'Paper', wins.paper, 'computer']
+		,['Rock', 'Scissors', wins.rock, 'player']
+		,['Paper', 'Rock', wins.paper, 'player']		
+		,['Paper', 'Scissors', wins.scissors, 'computer']
+		,['Scissors', 'Rock', wins.rock, 'computer']
+		,['Scissors', 'Paper', wins.scissors, 'player']
+		]
 
 function computerPlay()
 {
@@ -6,60 +16,28 @@ function computerPlay()
 	return play[index]
 }
 
-
-
-playerScore = 0
-computerScore = 0
-
-function playRound(p, c)
+function playRound(player, computer)
 {
-	console.log('Player chooses ' + p)
-	console.log('Computer chooses ' + c)
+	console.log('Player chooses ' + player)
+	console.log('Computer chooses ' + computer)
 
-	if (play.includes(p))
+	if (play.includes(player))
 	{
-
-		if (p == play[0] & c == play[0])
+		if (player == computer)
 		{
-			console.log(`Both players chose ${play[0]}, a draw`)
+			console.log('Player and computer chose ' + computer + ', a draw')
 		}
-		else if (p == play[0] & c == play[1])
+		else
 		{
-			console.log(`${play[1]} covers ${play[0]}, computer wins`)
-			computerScore++
-		}
-		else if (p == play[0] & c == play[2])
-		{
-			console.log(`${play[0]} breaks ${play[2]}, player wins`)
-			playerScore++
-		}
-		else if (p == play[1] & c == play[0])
-		{
-			console.log(`${play[1]} wraps ${play[0]}, players wins`)
-			playerScore++
-		}
-		else if (p == play[1] & c == play[1])
-		{
-			console.log(`Both players choose ${play[1]}, a draw`)
-		}
-		else if (p == play[1] & c == play[2])
-		{
-			console.log(`${play[2]} cuts ${play[1]}, computer wins`)
-			computerScore++
-		}
-		else if (p == play[2] & c == play[0])
-		{
-			console.log(`${play[0]} breaks ${play[2]}, computer wins`)
-			computerScore++
-		}
-		else if (p == play[2] & c == play[1])
-		{
-			console.log(`${play[2]} cuts ${play[1]}, player wins`)
-			playerScore++
-		}
-		else if (p == play[2] & c == play[2])
-		{
-			console.log(`both choose ${play[2]}, a draw`)
+			for (let i in pairs)
+			{
+				if (player == pairs[i][0] && computer == pairs[i][1])
+				{
+					console.log(pairs[i][2] + result[pairs[i][3]])
+					score[pairs[i][3]]++
+					break
+				} 
+			}
 		}
 	}
 	else
@@ -78,27 +56,33 @@ function game()
 	{
 		console.log('Game ' + i)
 		console.log('--------')
+
 		playerSelection = prompt('Please enter your selection')
 		playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase()
+
 		computerSelection = computerPlay()
+
 		playRound(playerSelection, computerSelection)
-		console.log('Player score: ' + playerScore + ', computer score: ' + computerScore)
+
+		console.log('Player score: ' + score.player + ', Computer score: ' + score.computer)
 	}
 
 	console.log('Game End!!!')
 
 
-	if (playerScore == computerScore)
+	if (score.player == score.computer)
 	{
 		console.log('A Draw')
 	}
-	else if (playerScore > computerScore)
+	else if (score.player > score.computer)
 	{
 		console.log('Player Wins!!')
 	}
 	else
 	{
-		console.log('Computer wins')
+		console.log('Computer Wins')
 	}
+
 }
+
 game()
