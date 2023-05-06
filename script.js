@@ -58,7 +58,7 @@ function game()
 		console.log('--------')
 
 		playerSelection = prompt("Welcome to our game\nTo play this game you need to open up your console panel\nPlease enter your selection 'rock', 'paper' or 'scissors'")
-		console.log('Player Selection: ' + playerSelection)
+
 		if (playerSelection === null)
 		{
 			console.log('Player has cancelled the game')
@@ -67,30 +67,36 @@ function game()
 		else
 		{
 			playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase()
+
+			computerSelection = computerPlay()
+
+			playRound(playerSelection, computerSelection)
+
+			console.log('Player score: ' + score.player + ', Computer score: ' + score.computer)
+
 		}
 
-		computerSelection = computerPlay()
+		if (i == 5)
+		{
+			console.log('Game End!!!')
 
-		playRound(playerSelection, computerSelection)
+			if (score.player == score.computer)
+			{
+				console.log('A Draw')
+			}
+			else if (score.player > score.computer)
+			{
+				console.log('Player Wins!!')
+			}
+			else
+			{
+				console.log('Computer Wins')
+			}
+		}
 
-		console.log('Player score: ' + score.player + ', Computer score: ' + score.computer)
 	}
 
-	console.log('Game End!!!')
 
-
-	if (score.player == score.computer)
-	{
-		console.log('A Draw')
-	}
-	else if (score.player > score.computer)
-	{
-		console.log('Player Wins!!')
-	}
-	else
-	{
-		console.log('Computer Wins')
-	}
 
 }
 
