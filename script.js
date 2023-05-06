@@ -58,7 +58,7 @@ function game()
 		console.log('--------')
 
 		playerSelection = prompt('Please enter your selection "rock, "paper" or "scissors"')
-		if (playerSelection == null)
+		if (playerSelection === null)
 		{
 			console.log('Player has cancelled the game')
 		}
