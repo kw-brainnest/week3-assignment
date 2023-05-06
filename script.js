@@ -57,7 +57,7 @@ function game()
 		console.log('Game ' + i)
 		console.log('--------')
 
-		playerSelection = prompt('Please enter your selection')
+		playerSelection = prompt('Please enter your selection "rock, "paper" or "scissors"')
 		playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase()
 
 		computerSelection = computerPlay()
